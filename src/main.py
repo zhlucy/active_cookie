@@ -1,20 +1,21 @@
 #!/usr/bin/env python
-
-from parser import Parser
+import argparse
+from inputparser import InputParser
 from cookiefinder import CookieFinder
 
-def main():
-    parser = Parser()
-    cookieFinder = CookieFinder(parser.getStructuredContent())
-    cookies = cookieFinder.getActiveCookies(parser.getDate())
-    printCookies(cookies)
+class Main:
+    def main():
+        parser = Main.getParser()
+        parser.readFile()
+        cookieFinder = CookieFinder(parser.getContent())
+        cookieFinder.printMostActiveCookies(parser.getDate())
 
-def printCookies(cookies):
-    if cookies == None:
-        print("No active cookie.")
-    else:
-        for cookie in cookies:
-            print(cookie)
+    def getParser():
+        parser = argparse.ArgumentParser()
+        parser.add_argument("log_file")
+        parser.add_argument("-d")
+        args = parser.parse_args()
+        return InputParser(args.log_file, args.d)
 
 if __name__ == '__main__':
-    main()
+    Main.main()

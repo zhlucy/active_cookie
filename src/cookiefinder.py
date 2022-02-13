@@ -1,5 +1,3 @@
-import csv
-
 class CookieFinder:
     def __init__(self, content):
         self.content = content
@@ -11,3 +9,11 @@ class CookieFinder:
             return [cookie for cookie in cookies if cookies[cookie] == max_active_count]
         else:
             return None
+
+    def printMostActiveCookies(self, day):
+        cookies = self.getActiveCookies(day)
+        if cookies == None:
+            print("No active cookie.")
+        else:
+            for cookie in cookies:
+                print(cookie)
