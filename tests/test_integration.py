@@ -2,7 +2,7 @@ import unittest
 from unittest import mock
 import os.path, sys, io
 sys.path.append('src')
-from src.main import Main
+from src.most_active_cookie import Main
 
 class Test(unittest.TestCase):
     def path(filename):
