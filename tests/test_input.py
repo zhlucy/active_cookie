@@ -3,6 +3,9 @@ from src.inputparser import InputParser
 import os.path, sys, io
 
 class TestInput(unittest.TestCase):
+    """
+    Tests for bad inputs.
+    """
     def path(self, filename):
         return os.path.join("test_inputs", filename)
 

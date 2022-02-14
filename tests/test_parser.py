@@ -3,11 +3,18 @@ import os.path
 from src.inputparser import InputParser
 
 class TestParser(unittest.TestCase):
+    """
+    Tests in functions in InputParser.
+    """
     testfile = os.path.join("tests", "test_inputs", "cookie_log.csv")
 
     def test_extractDate(self):
         parser = InputParser(TestParser.testfile, "2018-12-09")
         self.assertEqual("1010-83-21", parser.extractDate("something1010-83-21some"))
+
+    def test_bad_extractDate(self):
+        parser = InputParser(TestParser.testfile, "2018-12-09")
+        self.assertRaises(SystemExit, parser.extractDate, "something101")
 
     def test_updateCookies(self):
         parser = InputParser(TestParser.testfile, "2018-12-09")
