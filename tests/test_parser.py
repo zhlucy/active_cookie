@@ -4,7 +4,7 @@ from src.inputparser import InputParser
 
 class TestParser(unittest.TestCase):
     """
-    Tests in functions in InputParser.
+    Tests functions in InputParser.
     """
     testfile = os.path.join("tests", "test_inputs", "cookie_log.csv")
 
