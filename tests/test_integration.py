@@ -49,3 +49,11 @@ class Test(unittest.TestCase):
     @mock.patch('sys.argv', ["main", path("skip_days_log.csv"), "-d", "2012-08-05"])
     def test_skip_days_no_active(self):
         self.check_stdout("No active cookie.\n", most_active_cookie.Main.main)
+
+    @mock.patch('sys.argv', ["main", path("cookie_log.csv"), "-d", "20181209"])
+    def test_bad_timestamp(self):
+        self.assertRaises(SystemExit, most_active_cookie.Main.main)
+
+    @mock.patch('sys.argv', ["main", path("fakefile"), "-d", "20181209"])
+    def test_bad_file(self):
+        self.assertRaises(SystemExit, most_active_cookie.Main.main)

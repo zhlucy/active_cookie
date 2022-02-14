@@ -20,7 +20,7 @@ class InputParser:
             date (string): Date of the most active cookies
         """
         self.file = file
-        self.date = date
+        self.date = self.extractDate(date)
         self.content = {}
 
     def readFile(self):
@@ -56,7 +56,6 @@ class InputParser:
         if len(row) != 2:
             raise SystemExit("One row is incorrectly formatted.")
         cookie, timestamp = row[0], row[1]
-        #Consider short circuiting
         self.updateCookies(timestamp, cookie)
 
     def extractDate(self, timestamp):

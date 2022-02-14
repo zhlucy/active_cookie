@@ -1,10 +1,10 @@
 import unittest
 from src.inputparser import InputParser
-import os.path, sys, io
+import os.path
 
 class TestInput(unittest.TestCase):
     """
-    Tests for bad inputs.
+    Tests for bad input files.
     """
     def path(self, filename):
         return os.path.join("test_inputs", filename)
